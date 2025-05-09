@@ -109,7 +109,7 @@ function App() {
   return (
     <div
       className="h-screen w-screen overflow-hidden flex"
-      style={{ background: "var(--primary)" }}
+      style={{ background: "var(--bg)" }}
     >
       <main className="flex flex-1 overflow-hidden">
         <div className="flex-1 flex flex-col">
@@ -117,7 +117,7 @@ function App() {
             <img
               src="https://i.ibb.co/8nXMgR2c/Logo-atacadista.png"
               alt="Cabeçalho Logo Super Adega"
-              className="w-full h-24 object-contain"
+              className="w-full h-30 object-contain"
             />
           </div>
           {error ? (

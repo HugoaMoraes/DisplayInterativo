@@ -43,7 +43,7 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ products }) => {
               <div
                 ref={nodeRefs.current.get(product.id)}
                 className="relative flex bg-white rounded-lg shadow-xl overflow-hidden"
-                style={{ height: "450px", width: "100%" }} // Altura fixa para os cards
+                style={{ height: "550px", width: "100%" }} // Altura fixa para os cards
               >
                 {/* Coluna da esquerda */}
                 <div className="w-1/2 p-4 flex flex-col">
@@ -55,7 +55,7 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ products }) => {
                   <div
                     className="p-4 rounded-lg shadow-lg transform rotate-3 mb-4"
                     style={{
-                      background: "var(--primary)",
+                      background: "var(--valor)",
                     }}
                   >
                     <p
@@ -67,7 +67,7 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ products }) => {
                   </div>
                   <h2
                     className="text-xl font-bold mb-2"
-                    style={{ color: "var(--secondary)" }}
+                    style={{ color: "var(--primary)" }}
                   >
                     {product.nome}
                   </h2>

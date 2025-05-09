@@ -5,7 +5,7 @@ const LoadingScreen: React.FC = () => {
   return (
     <div
       className="min-h-screen flex flex-col items-center justify-center"
-      style={{ background: "var(--primary)" }}
+      style={{ background: "var(--bg)" }}
     >
       <div className="text-center">
         <div className="flex justify-center mb-4">
