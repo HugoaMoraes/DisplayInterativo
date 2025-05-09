@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Banner } from "../types";
 
@@ -6,7 +6,7 @@ interface BannerSidebarProps {
   banners: Banner[];
 }
 
-const BannerSidebar: React.FC<BannerSidebarProps> = ({ banners }) => {
+const BannerSidebar: React.FC<BannerSidebarProps> = memo(({ banners }) => {
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
 
   useEffect(() => {
@@ -14,16 +14,16 @@ const BannerSidebar: React.FC<BannerSidebarProps> = ({ banners }) => {
 
     const interval = setInterval(() => {
       setCurrentBannerIndex((current) => (current + 1) % banners.length);
-    }, 8000); // Rotate every 8 seconds
+    }, 8000);
 
     return () => clearInterval(interval);
   }, [banners.length]);
 
   return (
-    <aside className="w-96 bg-white shadow-inner">
+    <aside className="w-full md:w-96 bg-white shadow-inner">
       {banners.length === 0 ? (
-        <p className="text-center p-4">
-          Nenhum banner disponível no momento.Novidades em breve.
+        <p className="text-center p-4" role="status">
+          Nenhum banner disponível no momento. Novidades em breve.
         </p>
       ) : (
         <TransitionGroup>
@@ -35,16 +35,19 @@ const BannerSidebar: React.FC<BannerSidebarProps> = ({ banners }) => {
             <div className="h-full relative">
               <img
                 src={banners[currentBannerIndex]?.imagem}
-                alt={
-                  banners[currentBannerIndex]?.titulo || "Banner promocional"
-                }
+                alt={banners[currentBannerIndex]?.titulo || "Banner promocional"}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
               {banners[currentBannerIndex]?.titulo && (
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                  <h3 className="text-white text-xl font-bold">
+                <div 
+                  className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4"
+                  role="heading"
+                  aria-level={2}
+                >
+                  <h2 className="text-white text-xl font-bold">
                     {banners[currentBannerIndex].titulo}
-                  </h3>
+                  </h2>
                 </div>
               )}
             </div>
@@ -53,6 +56,8 @@ const BannerSidebar: React.FC<BannerSidebarProps> = ({ banners }) => {
       )}
     </aside>
   );
-};
+});
+
+BannerSidebar.displayName = 'BannerSidebar';
 
 export default BannerSidebar;

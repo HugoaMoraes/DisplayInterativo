@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Product } from "../types";
 import { Tag } from "lucide-react";
@@ -7,7 +7,7 @@ interface ProductDisplayProps {
   products: Product[];
 }
 
-const ProductDisplay: React.FC<ProductDisplayProps> = ({ products }) => {
+const ProductDisplay: React.FC<ProductDisplayProps> = memo(({ products }) => {
   const formatPrice = (price: string) => {
     if (!price) return price;
     const parts = price.split("");
@@ -25,25 +25,23 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ products }) => {
 
   return (
     <div className="flex-1 flex items-center justify-center p-4">
-      <TransitionGroup className="grid grid-cols-2 gap-8">
+      <TransitionGroup className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 w-full max-w-7xl">
         {products.map((product) => (
           <CSSTransition key={product.id} timeout={1000} classNames="product">
             <div
-              className="relative flex bg-white rounded-lg shadow-xl overflow-hidden"
-              style={{ height: "450px", width: "100%" }} // Altura fixa para os cards
+              className="relative flex flex-col md:flex-row bg-white rounded-lg shadow-xl overflow-hidden"
+              style={{ height: "450px" }}
             >
-              {/* Coluna da esquerda */}
-              <div className="w-1/2 p-4 flex flex-col">
+              <div className="w-full md:w-1/2 p-4 flex flex-col">
                 <img
                   src={product.imagem_cabecalho}
-                  alt="Cabeçalho do produto"
+                  alt={`Logo ${product.nome}`}
                   className="w-full h-32 object-contain mb-4"
+                  loading="lazy"
                 />
                 <div
                   className="p-4 rounded-lg shadow-lg transform rotate-3 mb-4"
-                  style={{
-                    background: "var(--primary)",
-                  }}
+                  style={{ background: "var(--primary)" }}
                 >
                   <p
                     className="text-4xl font-black animate-pulse"
@@ -65,19 +63,20 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ products }) => {
                   <div
                     className="absolute top-4 left-4 font-bold text-white px-3 py-1 rounded-full flex items-center"
                     style={{ background: "var(--secondary)" }}
+                    role="badge"
+                    aria-label="Produto em promoção"
                   >
-                    <Tag size={16} className="mr-1" />
+                    <Tag size={16} className="mr-1" aria-hidden="true" />
                     PROMOÇÃO
                   </div>
                 )}
               </div>
-
-              {/* Coluna da direita */}
-              <div className="w-1/2 relative">
+              <div className="w-full md:w-1/2 relative">
                 <img
                   src={product.imagem}
                   alt={product.nome}
                   className="w-full h-full object-contain"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -86,6 +85,8 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ products }) => {
       </TransitionGroup>
     </div>
   );
-};
+});
+
+ProductDisplay.displayName = 'ProductDisplay';
 
 export default ProductDisplay;
