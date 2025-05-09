@@ -115,7 +115,7 @@ function App() {
         <div className="flex-1 flex flex-col">
           <div className="bg-white mx-auto rounded-xl p-2 shadow-lg mt-2">
             <img
-              src="../src/img/Logo-atacadista.png"
+              src="https://i.ibb.co/8nXMgR2c/Logo-atacadista.png"
               alt="Cabeçalho Logo Super Adega"
               className="w-full h-24 object-contain"
             />
