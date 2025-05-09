@@ -16,7 +16,7 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ products }) => {
     return (
       <span className="whitespace-nowrap">
         <span className="text-3xl">{parts.slice(0, 2).join("")}</span>
-        <span className="text-4xl">{parts.slice(2, -2).join("")}</span>
+        <span className="text-7xl">{parts.slice(2, -2).join("")}</span>
         <span className="text-3xl">{parts.slice(-2).join("")}</span>
       </span>
     );
@@ -50,28 +50,28 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ products }) => {
                   <img
                     src={product.imagem_cabecalho}
                     alt="Cabeçalho do produto"
-                    className="w-full h-32 object-contain mb-4"
+                    className="w-full h-40 object-contain mb-4"
                   />
                   <div
-                    className="p-4 rounded-lg shadow-lg transform rotate-3 mb-4"
+                    className="px-2 py-4 rounded-lg shadow-lg transform rotate-3 mb-4 flex items-center justify-center"
                     style={{
                       background: "var(--valor)",
                     }}
                   >
                     <p
-                      className="text-4xl font-black animate-pulse"
+                      className="text-3xl font-black animate-pulse"
                       style={{ color: "var(--secondary)" }}
                     >
                       {formatPrice(product.preco)}
                     </p>
                   </div>
                   <h2
-                    className="text-xl font-bold mb-2"
+                    className="text-5xl font-bold mb-2"
                     style={{ color: "var(--primary)" }}
                   >
                     {product.nome}
                   </h2>
-                  <p className="text-gray-800 text-lg line-clamp-4">
+                  <p className="text-gray-800 text-xl line-clamp-4">
                     {product.descricao}
                   </p>
                   {isDestaque(product.destaque) && (

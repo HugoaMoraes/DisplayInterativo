@@ -113,11 +113,11 @@ function App() {
     >
       <main className="flex flex-1 overflow-hidden">
         <div className="flex-1 flex flex-col">
-          <div className="bg-white mx-auto rounded-xl p-2 shadow-lg mt-2">
+          <div className="bg-white mx-auto rounded-xl p-2 px-8 shadow-lg mt-6">
             <img
               src="https://i.ibb.co/8nXMgR2c/Logo-atacadista.png"
               alt="Cabeçalho Logo Super Adega"
-              className="w-full h-30 object-contain"
+              className="w-full h-40 object-contain"
             />
           </div>
           {error ? (
