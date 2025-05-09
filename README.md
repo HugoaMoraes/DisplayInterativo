@@ -150,7 +150,7 @@ http://localhost:3003
 ## Diagrama
 
 <div align="center">
-<img src="https://github.com/user-attachments/assets/024524c1-bfdc-40f0-ac64-9933630ea411" width="auto" />
+<img src="https://github.com/user-attachments/assets/64a12e22-7bf4-45ff-b391-f78e03402061" width="auto" />
 </div>
 
 ## Informações:
